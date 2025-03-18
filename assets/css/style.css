@@ -1,0 +1,18 @@
+.root {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 20rem;
+    background-color: grey;
+    border: black 1px solid;
+}
+
+.infoFrame {
+    background-color: lightgrey;
+    border: black 1px solid;
+    text-align: center;
+}
+
+#title {
+    text-align: center;
+}
