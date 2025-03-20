@@ -8,16 +8,41 @@
 <body>
 
 <section class="root">
-    <h2 id="title">Info</h2>
-    <section class="infoFrame">
-        <p id="infoIp"></p>
-        <p id="infoStad"></p>
-        <p id="infoRegio"></p>
-        <p id="infoLand"></p>
+    <section class="container">
+        <h2 class="title">Locatie</h2>
+        <section class="infoFrame">
+            <p id="infoIp"></p>
+            <p id="infoStad"></p>
+            <p id="infoRegio"></p>
+            <p id="infoLand"></p>
 
-        <label>
-            <input type="submit" id="submitButton" value="gegevens ophalen">
-        </label>
+            <label class="submitButton">
+                <input type="submit" id="getLocationButton" value="gegevens ophalen">
+            </label>
+        </section>
+    </section>
+    <section class="container">
+        <h2 class="title">Weather</h2>
+        <section class="infoFrame">
+            <p id="temperatuur"></p>
+            <p id="windSnelheid"></p>
+            <p id="regen"></p>
+
+            <label class="submitButton">
+                <input type="submit" id="getWeatherInfoButton" value="gegevens ophalen">
+            </label>
+        </section>
+    </section>
+
+    <section class="container">
+        <h2 class="title">Coordinates</h2>
+        <section class="infoFrame">
+                    <p id="lon"></p>
+                    <p id="lat"></p>
+            <label class="submitButton">
+                <input type="submit" id="getCoordinatesInfoButton" value="gegevens ophalen">
+            </label>
+        </section>
     </section>
 </section>
 
