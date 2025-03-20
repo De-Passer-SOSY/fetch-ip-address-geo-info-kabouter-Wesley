@@ -5,9 +5,11 @@ document.addEventListener("DOMContentLoaded", init);
 function init() {
     const locationButton = document.querySelector('#getLocationButton');
     const weatherButton = document.querySelector('#getWeatherInfoButton');
+    const coordinatesButton = document.querySelector('#getCoordinatesInfoButton');
 
     locationButton.addEventListener('click', locationInfoUpdate);
     weatherButton.addEventListener('click', weatherInfoUpdate);
+    coordinatesButton.addEventListener('click', coordinateUpdate);
 }
 
 async function getIp() {
@@ -33,9 +35,10 @@ async function getIpInfo() {
     }
 }
 
-async function getCordinats() {
-    const city = (await getIpInfo()).city;
-    const region = (await getIpInfo()).region;
+async function getCoordinates() {
+    const data = await getIpInfo()
+    const city = data.city;
+    const region = data.region;
 
     const url = `https://nominatim.openstreetmap.org/search?q=${city},${region}&format=json`
     try {
@@ -52,8 +55,8 @@ async function getCordinats() {
 }
 
 async function weatherInformation() {
-    const lat = (await getCordinats()).lat
-    const lon = (await getCordinats()).lon
+    const lat = (await getCoordinates()).lat
+    const lon = (await getCoordinates()).lon
 
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,wind_speed_10m,rain&forecast_days=1`
     try {
@@ -89,4 +92,16 @@ async function weatherInfoUpdate() {
     infoRegen.innerHTML = `Rain: ${data.current.rain}${data.current_units.rain}`
     infoTemperatuur.innerHTML = `Temperature: ${data.current.temperature_2m}${data.current_units.temperature_2m}`
     infoWindSnelheid.innerHTML = `Wind speed: ${data.current.wind_speed_10m}${data.current_units.wind_speed_10m}`
+}
+
+async function coordinateUpdate() {
+    const data = await getCoordinates()
+    const lon = data.lon
+    const lat = data.lat
+
+    const lonInfo = document.querySelector('#lon')
+    const latInfo = document.querySelector('#lat')
+
+    lonInfo.innerHTML = `Longitude: ${lon}`
+    latInfo.innerHTML = `Laitude: ${lat}`
 }
