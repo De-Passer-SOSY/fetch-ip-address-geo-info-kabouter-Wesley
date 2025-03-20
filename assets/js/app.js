@@ -82,12 +82,11 @@ async function locationInfoUpdate(){
 
 async function weatherInfoUpdate() {
     const data = await weatherInformation()
-
     const infoRegen = document.querySelector('#regen');
     const infoTemperatuur = document.querySelector('#temperatuur');
     const infoWindSnelheid = document.querySelector('#windSnelheid');
 
-    infoRegen.innerHTML = `Rain: ${data.current.rain}`
-    infoTemperatuur.innerHTML = `Temperature: ${data.current.temperature_2m}`
-    infoWindSnelheid.innerHTML = `Wind speed: ${data.current.wind_speed_10m}`
+    infoRegen.innerHTML = `Rain: ${data.current.rain}${data.current_units.rain}`
+    infoTemperatuur.innerHTML = `Temperature: ${data.current.temperature_2m}${data.current_units.temperature_2m}`
+    infoWindSnelheid.innerHTML = `Wind speed: ${data.current.wind_speed_10m}${data.current_units.wind_speed_10m}`
 }
